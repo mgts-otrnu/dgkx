@@ -1,4 +1,5 @@
 import arrow from "../../../assets/images/icons/left-arrow-primary.svg";
+import {MONITORING_LINK} from "../../../shared/config/config";
 
 import "./PageTitle.scss";
 
@@ -7,7 +8,7 @@ function PageTitle({title, prevLink, status}: { title: string, prevLink: string,
 
     return (
         <div className="page-title px-4 py-3">
-            <a href={prevLink} className="page-title__link">
+            <a href={MONITORING_LINK} className="page-title__link">
                 <img src={arrow} alt="Стрелка влево"/>
                 Назад
             </a>
