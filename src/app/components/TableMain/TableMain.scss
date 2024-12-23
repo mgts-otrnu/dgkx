@@ -1,0 +1,43 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.table-main {
+  color: var(--text-primary) !important;
+  max-height: 100%;
+
+  tbody {
+    max-height: 348px;
+  }
+
+  .table-main__th {
+    padding: 0 8px !important;
+    @include text-inter-12-sb;
+  }
+
+  .table-main__tr {
+    @include text-inter-12-reg;
+    cursor: pointer;
+  }
+
+  td {
+    padding: 6px 8px !important;
+  }
+}
+
+.table-main-pagination {
+  text-align: center;
+
+  button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    outline: 1px solid #494a4f;
+    border-radius: 1px;
+    border: none;
+
+    &.active {
+      background-color: #007bff;
+      color: white;
+    }
+  }
+}

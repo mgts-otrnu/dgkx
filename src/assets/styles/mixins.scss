@@ -1,0 +1,61 @@
+@import "project-variables";
+
+@mixin title-inter-22-b {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+}
+
+@mixin title-inter-20-sb {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin title-inter-16-m {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin title-inter-16-sb {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin text-inter-14-reg {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@mixin text-inter-14-sb {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin text-inter-14-m {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin text-inter-12-reg {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin text-inter-12-m {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin text-inter-12-sb {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+}

@@ -1,0 +1,53 @@
+@import "../../../assets/styles/accordion";
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+#ods-button:not(.collapsed) {
+  box-shadow: none;
+  background-color: var(--white);
+}
+
+.mkd__button {
+  padding: 8px 16px 8px 16px !important;
+
+  &:hover {
+    color: var(--bs-primary);
+  }
+}
+
+.items-in {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 4px;
+
+  .item-in {
+    display: flex;
+    align-items: center;
+    padding: 8px 8px 8px 24px;
+    @include text-inter-14-reg;
+    color: var(--text-primary);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--bs-primary);
+    }
+
+    &_active {
+      box-shadow: none;
+      background-color: transparent;
+      color: var(--bs-primary);
+    }
+
+    &_danger {
+      box-shadow: inset -3px 0px 0px var(--danger);
+      background-color: var(--bg-danger);
+
+      &:hover {
+        color: var(--bs-danger);
+      }
+    }
+  }
+}

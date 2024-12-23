@@ -1,0 +1,34 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/bootstrap-variables";
+@import "../../../assets/styles/mixins";
+
+.aside-left {
+  width: var(--aside-left-width);
+  height: 100%;
+  overflow-y: scroll;
+  direction: rtl;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--white);
+  z-index: 2;
+  flex-shrink: 0;
+
+  & > * {
+    direction: ltr;
+  }
+
+  &__search {
+    padding: 16px 8px 12px;
+  }
+
+  &__input {
+    @include text-inter-14-reg;
+    line-height: 18px;
+    padding: 6px 6px 6px 32px;
+    box-sizing: border-box;
+    border: 1px solid var(--neutral);
+    border-radius: 8px;
+    background-image: url("../../../assets/images/icons/aside-left/search.svg");
+    background-repeat: no-repeat;
+    background-position: 7px 5px;
+  }
+}

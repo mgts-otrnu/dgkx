@@ -1,0 +1,67 @@
+@import "project-variables";
+
+.form-control, .form-select {
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  position: relative;
+}
+
+.form-control:disabled {
+  opacity: .65 !important;
+}
+
+.form-control:focus {
+  color: var(--text-primary) !important;
+  border-color: var(--bs-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 0.25rem rgb(0, 165, 195, 0.25) !important;
+}
+
+.form-control::placeholder {
+  color: var(--bs-secondary) !important;
+}
+
+.form-select {
+  color: var(--text-primary);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("../../assets/images/icons/arrow-select.svg") white no-repeat right !important;
+}
+
+/*For IE*/
+select::-ms-expand {
+  display: none;
+}
+
+.form-select:focus {
+  color: var(--text-primary) !important;
+  border-color: var(--bs-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 0.25rem rgb(0, 165, 195, 0.25) !important;
+}
+
+.form-select:disabled {
+  background-color: var(--bs-secondary-bg) !important;
+  background-image: none !important;
+}
+
+select:disabled {
+  opacity: .65;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: rgb(0, 165, 195, .8);
+  --bs-btn-hover-border-color: rgb(0, 165, 195, .8);
+  --bs-btn-active-bg: var(--bs-primary);
+  --bs-btn-active-border-color: var(--bs-primary);
+
+  &:disabled {
+    background: #ECF6FF;
+    border: none;
+    color: rgba(109, 119, 130, 0.5);
+  }
+}

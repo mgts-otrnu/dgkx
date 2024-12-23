@@ -1,0 +1,39 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.page-title {
+  border-bottom: 1px solid var(--neutral-5);
+
+  &__link {
+    @include text-inter-14-m;
+    color: var(--bs-primary);
+    text-decoration: none;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    @include title-inter-20-sb;
+    display: flex;
+    align-items: center;
+  }
+
+  &__status {
+    @include text-inter-14-reg;
+    padding: 4px 8px;
+    margin-left: 12px;
+    border-radius: 4px;
+    color: #EAFCFF;
+
+    &_draft {
+      background-color: var(--neutral-7);
+    }
+
+    &_progress {
+      background-color: var(--progress);
+    }
+
+    &_finished {
+      background-color: var(--finished);
+    }
+  }
+}

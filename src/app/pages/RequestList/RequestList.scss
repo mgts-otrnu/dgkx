@@ -1,0 +1,120 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.request-list {
+  min-height: 100%;
+  padding: 16px;
+
+  &__filter {
+    margin-bottom: 16px;
+
+    &_left {
+      .form-select {
+        padding-bottom: 0;
+        height: 32px;
+        width: 155px;
+
+        option:disabled {
+          color: var(--text-secondary) !important;
+          font-size: 12px !important;
+          line-height: 14px !important;
+        }
+      }
+
+      .select-wrapper {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        &::after {
+          position: absolute;
+          top: -4px;
+          left: 15%;
+          color: rgba(0, 0, 0, .56) !important;
+          font-size: 12px !important;
+          line-height: 14px !important;
+          background: var(--white);
+          padding-left: 4px;
+          padding-right: 4px;
+        }
+
+        &_status::after {
+          content: "Статус";
+        }
+
+        &_orgs::after {
+          content: "Организация";
+        }
+
+        &_fio::after {
+          content: "ФИО";
+        }
+
+        &_phone::after {
+          content: "Телефон";
+        }
+
+        &_target::after {
+          content: "Цель доступа";
+        }
+      }
+    }
+
+    &_right {
+      .request-list__search {
+        height: 32px;
+        padding: 6px 6px 6px 32px;
+        box-sizing: border-box;
+        background-image: url("../../../assets/images/icons/aside-left/search.svg");
+        background-repeat: no-repeat;
+        background-position: 7px 5px;
+      }
+    }
+  }
+
+  &__table {
+    height: 100%;
+    overflow-x: scroll;
+
+    .table-req {
+      width: 100%;
+
+      th {
+        @include text-inter-14-sb;
+      }
+
+      td {
+        @include text-inter-14-reg;
+        line-height: 24px;
+        white-space: nowrap;
+      }
+
+      &__tr {
+        cursor: pointer;
+      }
+
+      &__td {
+        text-align: center;
+        color: var(--white);
+
+        span {
+          padding: 4px;
+          border-radius: 4px;
+        }
+
+        &_draft span {
+          background-color: var(--neutral-7);
+        }
+
+        &_progress span {
+          background-color: var(--progress);
+        }
+
+        &_finished span {
+          background-color: var(--finished);
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,8 @@
+@import "../../../assets/styles/project-variables";
+
+.spinner-custom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--bs-primary);
+}
