@@ -36,7 +36,7 @@ function InputDateCustom({name, defaultDate, disabled, onChange, isCalendarOpen,
     useEffect(() => {
         const dateElement: HTMLElement | null = document.getElementById(`input-date-custom-wrapper-${name}`);
         dateElement && setDateElement(dateElement);
-        dateElement && name === "single" && dateElement.classList.add("input-date-custom_placeholder");
+        dateElement && dateElement.classList.add("input-date-custom_placeholder");
     }, [dateElement]);
 
     return (

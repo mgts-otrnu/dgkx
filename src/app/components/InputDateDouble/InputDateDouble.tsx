@@ -61,6 +61,7 @@ function InputDateDouble({defaultDateFrom, defaultDateTo, disabled, onChange}: {
 
         if (inputElement) {
             (inputElement as HTMLInputElement).value = convertDateToInputFormat(convertDateTypeToString(dateFrom));
+            inputElement.parentElement?.classList.remove("input-date-custom_placeholder");
         }
 
         onChange("from", convertDateTypeToString(dateFrom));
@@ -71,6 +72,7 @@ function InputDateDouble({defaultDateFrom, defaultDateTo, disabled, onChange}: {
 
         if (inputElement) {
             (inputElement as HTMLInputElement).value = convertDateToInputFormat(convertDateTypeToString(dateTo));
+            inputElement.parentElement?.classList.remove("input-date-custom_placeholder");
         }
 
         onChange("to", convertDateTypeToString(dateTo));
