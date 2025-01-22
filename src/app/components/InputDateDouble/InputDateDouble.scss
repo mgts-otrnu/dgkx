@@ -1,0 +1,12 @@
+@import "../../../assets/styles/calendar-wrapper";
+@import "../../../assets/styles/input-date-custom";
+
+.input-date-double {
+  position: relative;
+
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+}

@@ -1,0 +1,92 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.popup-incident {
+  width: 538px;
+  height: 176px;
+  background: var(--white);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  display: flex;
+
+  &__content {
+    width: 100%;
+  }
+
+  &__aside {
+    width: 56px;
+    height: 100%;
+    background-color: var(--progress);
+    background-image: url("../../../assets/images/icons/incident.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 8px 8px 16px;
+  }
+
+  &__title {
+    @include title-inter-18-sb;
+  }
+
+  &__close-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../../assets/images/icons/close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__body {
+    height: 136px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 16px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 16px;
+    width: 135px;
+  }
+
+  &__info {
+    display: flex;
+    width: 70%;
+  }
+
+  &__info-title-items {
+    width: 40%;
+  }
+
+  &__info-text-items {
+    width: 60%;
+  }
+
+  &__info-title {
+    @include text-inter-14-sb;
+    margin-bottom: 0;
+    min-height: 24px;
+  }
+
+  &__info-text {
+    @include text-inter-14-reg;
+    line-height: 24px;
+    margin-bottom: 0;
+    min-height: 24px;
+  }
+
+  &__button {
+    font-size: 14px;
+  }
+}

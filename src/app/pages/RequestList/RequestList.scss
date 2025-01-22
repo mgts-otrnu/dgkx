@@ -13,15 +13,11 @@
         padding-bottom: 0;
         height: 32px;
         width: 155px;
-
-        option:disabled {
-          color: var(--text-secondary) !important;
-          font-size: 12px !important;
-          line-height: 14px !important;
-        }
+        background-color: transparent !important;
+        cursor: pointer;
       }
 
-      .select-wrapper {
+      .control-wrapper {
         position: relative;
         height: 100%;
         width: 100%;
@@ -36,6 +32,18 @@
           background: var(--white);
           padding-left: 4px;
           padding-right: 4px;
+        }
+
+        &_id, &_creation {
+          input {
+            padding: 6px 12px 0;
+            line-height: 18px;
+            height: 32px;
+          }
+        }
+
+        &_id::after {
+          content: "Номер заявки";
         }
 
         &_status::after {
@@ -56,6 +64,18 @@
 
         &_target::after {
           content: "Цель доступа";
+        }
+
+        &_creation::after {
+          content: "Дата создания";
+        }
+
+        &_placeholder::after {
+          top: 9px;
+          left: 12px;
+          font-size: 14px !important;
+          z-index: -1;
+          height: 20px;
         }
       }
     }
@@ -81,6 +101,7 @@
 
       th {
         @include text-inter-14-sb;
+        white-space: nowrap;
       }
 
       td {

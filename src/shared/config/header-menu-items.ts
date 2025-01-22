@@ -4,7 +4,7 @@ import {
     LIST_LINK,
     HISTORY_LINK,
     SERVICE_LINK,
-    DOCUMENT_LINK
+    DOCUMENT_LINK,
 } from "./config";
 
 import homeIcon from "../../assets/images/icons/header-menu/home.svg";

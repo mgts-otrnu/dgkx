@@ -45,6 +45,11 @@ select::-ms-expand {
 .form-select:disabled {
   background-color: var(--bs-secondary-bg) !important;
   background-image: none !important;
+  cursor: default;
+}
+
+.form-select.form-select_default {
+  color: var(--text-secondary) !important;
 }
 
 select:disabled {
@@ -64,4 +69,8 @@ select:disabled {
     border: none;
     color: rgba(109, 119, 130, 0.5);
   }
+}
+
+.btn-light {
+  --bs-btn-bg: var(--grey);
 }

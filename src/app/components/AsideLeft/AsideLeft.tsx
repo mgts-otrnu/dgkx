@@ -1,14 +1,19 @@
+import {Dispatch, SetStateAction} from "react";
+
 import AccordionAddress from "../AccordionAddress/AccordionAddress";
 
 import {mkdItems} from "../../../shared/config/mkd-items";
 
-import './AsideLeft.scss';
 import {MkdItemType} from "../../../shared/types/mkd-Item.type";
-import {Dispatch, SetStateAction} from "react";
+
+import './AsideLeft.scss';
 
 interface Props {
     mkdItemsList: MkdItemType[];
     setMkdItemsList: Dispatch<SetStateAction<MkdItemType[]>>;
+    levelItemCurrent: "basement" | "floor" | "roof";
+    setLevelItemCurrent: Dispatch<SetStateAction<"basement" | "floor" | "roof">>;
+    setMkdItemCurrent: Dispatch<SetStateAction<MkdItemType | undefined>>;
 }
 
 function AsideLeft(props: Props) {

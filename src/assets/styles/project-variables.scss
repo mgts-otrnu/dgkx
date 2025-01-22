@@ -8,6 +8,7 @@ $primary: #00A5C3 !default;
   --white: #FFFFFF;
   --active: #EAFCFF;
   --black: #000000;
+  --grey: #F2F3F7;
   --disabled: #E9ECEF;
   --danger: #FF4D4F;
   --bg-danger: #FF4D4F10;
@@ -17,10 +18,13 @@ $primary: #00A5C3 !default;
   --neutral-7: #8C8C8C;
   --progress: #FAC031;
   --finished: #26CD58;
+  --incident: #ffe9e9;
+  --bg-secondary: #F2F3F7;
 
   // text colors
   --text-primary: #3A3F48;
   --text-secondary: #616979;
+  --text-calendar-secondary: #969FA8;
 
   // width and height
   --min-height: 900px;

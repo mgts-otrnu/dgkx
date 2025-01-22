@@ -12,6 +12,12 @@
   line-height: 24px;
 }
 
+@mixin title-inter-18-sb {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
 @mixin title-inter-16-m {
   font-weight: 500;
   font-size: 16px;

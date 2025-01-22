@@ -1,0 +1,152 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.calendar-custom {
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__header {
+    @include title-inter-16-m;
+  }
+
+  &__body {
+    width: 248px;
+    @include text-inter-14-reg;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      gap: 4px;
+      padding: 0;
+      margin: 0;
+
+      &.calendar-custom__weekdays {
+        margin-bottom: 4px;
+      }
+
+      &.calendar-custom__dates {
+        display: grid;
+        gap: 4px;
+        grid-template-columns: repeat(7, 32px);
+      }
+
+      li {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 8px;
+
+        &:nth-child(7n), &:nth-child(7n-1) {
+          color: var(--text-calendar-secondary);
+        }
+
+        &:has(.calendar-custom__date_left-radius):not(:nth-child(7n)) span,
+        &:nth-child(7n - 6):not(:last-child) span {
+          width: 46px;
+          left: 0;
+        }
+
+        &:nth-child(7n):not(:first-child) span {
+          width: 46px;
+          right: 0;
+        }
+
+        &:first-child:has(.calendar-custom__date_secondary), &:nth-child(7n - 6) {
+          span {
+            width: 32px;
+            border-bottom-left-radius: 8px;
+            border-top-left-radius: 8px;
+          }
+        }
+
+        &:last-child span, &:nth-child(7n) span {
+          width: 32px;
+          border-bottom-right-radius: 8px;
+          border-top-right-radius: 8px;
+        }
+      }
+
+      .calendar-custom__date {
+        position: relative;
+        background: transparent;
+
+        &_primary {
+          background-color: var(--bs-primary);
+          color: var(--white) !important;
+        }
+
+        &_secondary {
+          position: absolute;
+          height: 28px;
+          width: 46px;
+          background-color: var(--bg-secondary);
+          color: var(--text-calendar-secondary) !important;
+          z-index: -1;
+        }
+
+        &_span {
+          position: absolute;
+        }
+
+        &_left-radius {
+          width: 32px;
+          border-bottom-left-radius: 8px;
+          border-top-left-radius: 8px;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 12px;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &_month {
+      width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &_year {
+      border: none;
+      width: 80px;
+      @include title-inter-16-m;
+      text-align: center;
+    }
+  }
+
+  &__nav-button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__datalist {
+    width: 72px;
+  }
+
+  &__reset-button {
+    text-align: start;
+    font-size: 14px;
+    color: var(--bs-primary);
+    border: none;
+    background: none;
+    padding: 0 8px;
+  }
+}

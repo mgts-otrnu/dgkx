@@ -41,9 +41,12 @@
       color: var(--bs-primary);
     }
 
-    &_danger {
+    &_incident {
       box-shadow: inset -3px 0px 0px var(--danger);
       background-color: var(--bg-danger);
+      background-image: url("../../../assets/images/icons/attention.svg");
+      background-repeat: no-repeat;
+      background-position: 90px center;
 
       &:hover {
         color: var(--bs-danger);

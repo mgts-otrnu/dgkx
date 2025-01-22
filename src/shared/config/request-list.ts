@@ -2,7 +2,7 @@ import {RequestItemType} from "../types/request-Item.type";
 
 export const requestList: RequestItemType[] = [
     {
-        id: 1531,
+        id: "1531",
         status: "draft",
         org: "ДЖКХ",
         fio: "Румынов И.А.",
@@ -10,23 +10,25 @@ export const requestList: RequestItemType[] = [
         phone: "+79136305612",
         target: "Ремонт",
         comment: "",
-        dateAccess: "02.12.2024, 19:56",
+        dateAccessFrom: "02.12.2024, 19:56",
+        dateAccessTo: "02.12.2024, 19:56",
         dateCreation: "02.12.2024, 19:56"
     },
     {
-        id: 1532,
+        id: "1532",
         status: "progress",
-        org: "ДЖКХ",
+        org: "ЖКХ",
         fio: "Румынов И.А.",
         position: "Электрик",
         phone: "+79156125518",
         target: "Обслуживание",
         comment: "",
-        dateAccess: "05.12.2024, 19:56",
+        dateAccessFrom: "05.12.2024, 19:56",
+        dateAccessTo: "05.12.2025, 19:56",
         dateCreation: "05.12.2024, 19:56"
     },
     {
-        id: 1533,
+        id: "1533",
         status: "progress",
         org: "ДЖКХ",
         fio: "Румынов И.А.",
@@ -34,11 +36,12 @@ export const requestList: RequestItemType[] = [
         phone: "+79151465512",
         target: "Устранение аварии",
         comment: "",
-        dateAccess: "02.12.2024, 19:56",
+        dateAccessFrom: "02.12.2024, 19:56",
+        dateAccessTo: "02.12.2024, 20:56",
         dateCreation: "02.12.2024, 19:56"
     },
     {
-        id: 1534,
+        id: "1534",
         status: "finished",
         org: "ДЖКХ",
         fio: "Румынов И.А.",
@@ -46,7 +49,8 @@ export const requestList: RequestItemType[] = [
         phone: "+79146205112",
         target: "Ремонт",
         comment: "",
-        dateAccess: "02.12.2024, 19:56",
+        dateAccessFrom: "02.12.2024, 19:56",
+        dateAccessTo: "06.12.2024, 19:56",
         dateCreation: "02.12.2024, 19:56"
     }
 ];

@@ -1,10 +1,11 @@
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
+import {Dispatch, SetStateAction} from "react";
+import {useNavigate} from "react-router-dom";
 
 import PageTitle from "../../components/PageTitle/PageTitle";
-import AsideLeft from "../../components/AsideLeft/AsideLeft";
-import PaginationCustom from "../../components/PaginationCustom/PaginationCustom";
+import TableDetector from "../../components/TableDetector/TableDetector";
+import levelDoubleClickHandler from "../../../shared/utils/levelDoubleClickHandler";
 
-import {detectorItems} from "../../../shared/config/detector-items";
+import {mkdLevels} from "../../../shared/config/mkdLevels";
 
 import humidity from "../../../assets/images/icons/mkd/humidity.svg";
 import smoke from "../../../assets/images/icons/mkd/smoke.svg";
@@ -16,113 +17,72 @@ import floor3 from "../../../assets/images/video/floor-3.png";
 import basement from "../../../assets/images/video/basement-1.png";
 import roof from "../../../assets/images/video/roof-1.png";
 
-import {MkdItemType} from "../../../shared/types/mkd-Item.type";
-import {DetectorItemType} from "../../../shared/types/detector-Item.type";
+import {incident, MkdItemType} from "../../../shared/types/mkd-Item.type";
 
 import "./MkdPage.scss";
 
 interface Props {
-    mkdItemsList: MkdItemType[];
-    setMkdItemsList: Dispatch<SetStateAction<MkdItemType[]>>;
     mkdItemCurrent: MkdItemType | undefined;
+    setLevelItemCurrent: Dispatch<SetStateAction<"basement" | "floor" | "roof">>;
 }
 
-function MkdPage(props: Props) {
-    const [items, setItems] = useState<HTMLTableRowElement[]>([]);
-    const titles: string[] = ["Датчик", "Этаж", "Статус", "Значение"];
+function MkdPage({mkdItemCurrent, setLevelItemCurrent}: Props) {
+    const navigate = useNavigate();
+    const floorVideo: string[] = [floor1, floor2, floor3, floor2, floor3];
+    const basementVideo: string[] = [basement];
+    const roofVideo: string[] = [roof];
 
-    useEffect(() => {
-        const tableElement: HTMLElement | null = document.getElementById("table-detector");
-        if (tableElement) {
-            const itemsElements: HTMLTableRowElement[] = Array.from(tableElement.getElementsByTagName('tr')).slice(1);
-            setItems(itemsElements);
-        }
-    }, []);
+    function handleLevelDoubleClick(event: any): void {
+        levelDoubleClickHandler(event, setLevelItemCurrent, navigate);
+    }
 
     return (
-        <div className="content-wrapper">
-            <AsideLeft {...props} />
-            <div className="mkd-page">
-                <PageTitle title={`г.Москва, ${props.mkdItemCurrent && props.mkdItemCurrent.address}`} prevLink="/list"/>
-                <div className="mkd-page__content">
-                    <div className="mkd-page__info">
-                        <div className="mkd-page__image">
-                            <div className="mkd-page__image_basement">
-                                <div className="mkd-page__detectors mkd-page__detectors_basement">
-                                    <img src={humidity} alt="Датчик влажности"/>
-                                    <img src={smoke} alt="Датчик задымления"/>
-                                    <img src={doorContact} alt="Геркон"/>
+        <div className="mkd-page">
+            <PageTitle title={`г.Москва, ${mkdItemCurrent && mkdItemCurrent.address}`}/>
+            <div className="mkd-page__content">
+                <div className="mkd-page__info">
+                    <div className="mkd-page__levels">
+                        {mkdLevels && mkdLevels.map((level: {
+                            name: string,
+                            value: string
+                        }, index: number) => (
+                            <>
+                                <div key={index}
+                                     className={`mkd-page__level mkd-page__level_${level.name} 
+                                     ${mkdItemCurrent && mkdItemCurrent.status === incident && "mkd-page__level_incident"}`}
+                                     id={`level-${mkdItemCurrent && mkdItemCurrent.id}-${level.name}`}
+                                     onDoubleClick={handleLevelDoubleClick}>
+                                    <div className={`mkd-page__detectors mkd-page__detectors_${level.name}`}>
+                                        <img src={humidity} alt="Датчик влажности"/>
+                                        <img src={smoke} alt="Датчик задымления"/>
+                                        <img src={doorContact} alt="Геркон"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="mkd-page__image_floor">
-                                <div className="mkd-page__detectors mkd-page__detectors_floor">
-                                    <img src={humidity} alt="Датчик влажности"/>
-                                    <img src={smoke} alt="Датчик задымления"/>
-                                    <img src={doorContact} alt="Геркон"/>
+                                <div className={`mkd-page__camera mkd-page__camera_${level.name}`}><img src={camera} alt="Камера"/>
                                 </div>
-                            </div>
-                            <div className="mkd-page__image_roof">
-                                <div className="mkd-page__detectors mkd-page__detectors_roof">
-                                    <img src={humidity} alt="Датчик влажности"/>
-                                    <img src={smoke} alt="Датчик задымления"/>
-                                    <img src={doorContact} alt="Геркон"/>
-                                </div>
-                            </div>
-                            <div className="mkd-page__camera mkd-page__camera_basement"><img src={camera} alt="Камера"/>
-                            </div>
-                            <div className="mkd-page__camera mkd-page__camera_floor"><img src={camera} alt="Камера"/>
-                            </div>
-                            <div className="mkd-page__camera mkd-page__camera_roof"><img src={camera} alt="Камера"/>
-                            </div>
-                        </div>
-                        <div className="mkd-page__video-items">
-                            <div className="mkd-page__video mkd-page__video_basement">
-                                <div className="mkd-page__video-title">Камеры (Этаж 1)</div>
-                                <div className="mkd-page__video-images">
-                                    <img src={floor1} alt="Видео"/>
-                                    <img src={floor2} alt="Видео"/>
-                                    <img src={floor3} alt="Видео"/>
-                                </div>
-                            </div>
-                            <div className="mkd-page__video mkd-page__video_floor">
-                                <div className="mkd-page__video-title">Камеры (Подвал)</div>
-                                <div className="mkd-page__video-images">
-                                    <img src={basement} alt="Видео"/>
-                                </div>
-                            </div>
-                            <div className="mkd-page__video mkd-page__video_roof">
-                                <div className="mkd-page__video-title">Камеры (Чердак)</div>
-                                <div className="mkd-page__video-images">
-                                    <img src={roof} alt="Видео"/>
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        ))}
                     </div>
+                    <div className="mkd-page__video-items">
+                        {mkdLevels && mkdLevels.map((level: {
+                            name: string,
+                            value: string
+                        }, index: number) => (
+                            <div key={index} className={`mkd-page__video mkd-page__video_${level.name}`}>
+                                <div className="mkd-page__video-title">Камеры ({level.value})</div>
+                                <div className="mkd-page__video-images">
+                                    {(level.name === "basement" ? basementVideo : level.name === "floor" ? floorVideo : roofVideo)
+                                        .map((video: string, index: number) => (
+                                        <img key={index} src={video} alt="Видео"/>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
-                    <div className="mkd-page__table">
-                        <table className="table table-striped table-bordered mb-0 table-detector" id="table-detector">
-                            <thead>
-                            <tr>
-                                {titles.map((title: string, index: number) => (
-                                    <th key={index} className="table-detector__th p-3">{title}</th>
-                                ))}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {detectorItems.map((item: DetectorItemType, index: number) => (
-                                <tr key={index}
-                                    className={`table-detector__tr table-detector__tr_${item.id} d-none`}
-                                    id={`table-detector-tr-${item.id}`}>
-                                    <td className="p-3">{item.name}</td>
-                                    <td className="p-3">{item.floor}</td>
-                                    <td className="p-3">{item.status}</td>
-                                    <td className="p-3">{item.value}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    <PaginationCustom paginationItems={items} type="full" itemsPerPageInitial={10}/>
+                <div className="mkd-page__table">
+                    <TableDetector/>
                 </div>
             </div>
         </div>

@@ -1,0 +1,56 @@
+@import "../../../assets/styles/project-variables";
+
+.input-date-custom {
+  position: relative;
+
+  &__picker {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../../assets/images/icons/calendar.svg");
+    display: block;
+    position: absolute;
+    top: 7px;
+    right: 6px;
+    z-index: 25;
+  }
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder {
+  visibility: hidden !important;
+}
+
+input[type="date"]:before {
+  position: absolute;
+  width: 85%;
+  top: 9px;
+  left: 12px;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, .56) !important;
+  line-height: 14px !important;
+  background: var(--white);
+  padding-left: 4px;
+  padding-right: 4px;
+  content: ''
+}
+
+.input-date-custom_placeholder {
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+  }
+}
+
+input[type="date"]:focus {
+  &:before {
+    content: '' !important;
+  }
+}
+
+input[type="date"]:disabled:before {
+  background-color: #e9ecef;
+}

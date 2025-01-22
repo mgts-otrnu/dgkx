@@ -17,6 +17,18 @@
   .table-main__tr {
     @include text-inter-12-reg;
     cursor: pointer;
+
+    &_incident .table-main__td_status {
+      background-image: url("../../../assets/images/icons/attention.svg");
+      background-repeat: no-repeat;
+      background-position: 40px center;
+    }
+
+    &_incident > * {
+      --bs-table-striped-bg: transparent;
+      background-color: var(--incident);
+
+    }
   }
 
   td {

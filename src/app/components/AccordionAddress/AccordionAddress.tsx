@@ -1,30 +1,37 @@
 import {Dispatch, SetStateAction} from "react";
+import {useNavigate} from "react-router-dom";
 
-import dangerIcon from "../../../assets/images/icons/map/danger.svg";
+import {mkdDoubleClickHandler, setMkdItem} from "../../../shared/utils/mkdDoubleClickHandler";
+import collapseAccordionItems from "../../../shared/utils/collapseAccordionItems";
+import levelDoubleClickHandler from "../../../shared/utils/levelDoubleClickHandler";
+
+import {MONITORING_LINK} from "../../../shared/config/config";
 
 import {MkdItemType} from "../../../shared/types/mkd-Item.type";
 
 import './AccordionAddress.scss';
+import {regexOnlyNumbers} from "../../../shared/config/regex";
+import {mkdLevels} from "../../../shared/config/mkdLevels";
 
 interface Props {
     mkdItemsList: MkdItemType[];
     setMkdItemsList: Dispatch<SetStateAction<MkdItemType[]>>;
+    levelItemCurrent: "basement" | "floor" | "roof";
+    setLevelItemCurrent: Dispatch<SetStateAction<"basement" | "floor" | "roof">>;
+    setMkdItemCurrent: Dispatch<SetStateAction<MkdItemType | undefined>>;
 }
 
-function AccordionAddress(props: Props) {
-    const mkdInItems: string[] = ["Подвал", "Этаж 1", "Чердак"];
+function AccordionAddress({mkdItemsList, setMkdItemsList, levelItemCurrent, setLevelItemCurrent, setMkdItemCurrent}: Props) {
+    const navigate = useNavigate();
 
     function handleMainButtonClick(): void {
-        const buttonMapElement: HTMLElement | null = document.getElementById("map-button");
-        const accordionButtonElements: HTMLCollectionOf<Element> = document.getElementsByClassName("accordion-button");
-
-        Array.from(accordionButtonElements).forEach(element => {
-            element.classList.add("collapsed");
-        });
-
+        const buttonMapElement: Element | null = document.getElementById("map-button");
         if (buttonMapElement) {
             buttonMapElement.classList.remove("collapsed");
+            collapseAccordionItems(buttonMapElement);
         }
+
+        navigate(MONITORING_LINK);
     }
 
     function handleMkdButtonClick(): void {
@@ -34,14 +41,16 @@ function AccordionAddress(props: Props) {
         }
     }
 
-    function handleItemInButtonClick(event: any): void {
-        event.target.classList.add("item-in_danger");
-        const dangerIconElement: HTMLImageElement = document.createElement("img");
-        dangerIconElement.src = `${dangerIcon}`;
-        dangerIconElement.style.marginLeft = "8px";
-        event.target.append(dangerIconElement);
+    function handleMkdButtonDoubleClick(event: any) {
+        mkdDoubleClickHandler(event, mkdItemsList, setMkdItemCurrent, navigate);
+        event.target.classList.remove("collapsed");
+        document.getElementById(`collapse-mkd-${event.target.id.replace(/\D/g, "")}`)?.classList.add("show");
     }
 
+    function handleItemInButtonDoubleClick(event: any): void {
+        setMkdItem(event, mkdItemsList, setMkdItemCurrent)
+        levelDoubleClickHandler(event, setLevelItemCurrent, navigate);
+    }
 
     return (
         <div className="accordion accordion-flush" id="accordion">
@@ -64,31 +73,39 @@ function AccordionAddress(props: Props) {
                         ОДС-042
                     </button>
                 </h2>
-                <div id="collapse-ods" className="accordion-collapse collapse show"
+                <div id="collapse-ods" className="accordion-collapse collapse mkd-items__collapse show"
                      data-bs-parent="#accordion">
 
                     <div className="accordion accordion-flush accordion_mkd" id="accordion-mkd-items">
-                        {props.mkdItemsList.map((item: MkdItemType, index: number) => (
+                        {mkdItemsList.map((item: MkdItemType, index: number) => (
                             <div className={`accordion-item mkd mkd_${item.id}`} key={index}>
                                 <h2 className="accordion-header">
                                     <button
                                         className={`accordion-button collapsed mkd__button mkd__button_${item.id}`}
                                         id={`mkd-button-${item.id}`}
                                         type="button" data-bs-toggle="collapse"
-                                        data-bs-target={`#collapse-mkd-${index + 1}`}
+                                        data-bs-target={`#collapse-mkd-${item.id}`}
                                         aria-expanded="false"
-                                        aria-controls={`collapse-mkd-${index + 1}`}
-                                        onClick={handleMkdButtonClick}>
+                                        aria-controls={`collapse-mkd-${item.id}`}
+                                        onClick={handleMkdButtonClick}
+                                        onDoubleClick={handleMkdButtonDoubleClick}>
                                         {item.name}
                                     </button>
                                 </h2>
-                                <div id={`collapse-mkd-${index + 1}`} className="accordion-collapse collapse"
-                                     data-bs-parent="#accordion-mkd-items">
+                                <div id={`collapse-mkd-${item.id}`}
+                                     className="accordion-collapse collapse">
                                     <div className="accordion-body items-in">
-                                        {mkdInItems && mkdInItems.map((itemIn: string, index: number) => (
-                                            <div className={`item-in item-in_${item.id}`} key={index}
-                                            onClick={handleItemInButtonClick}>
-                                                {itemIn}
+                                        {mkdLevels && mkdLevels.map((level: {
+                                            name: string,
+                                            value: string
+                                        }, index: number) => (
+                                            <div
+                                                className={`item-in item-in_${item.id}
+                                                ${item.status === "incident" && level.name === levelItemCurrent ? "item-in_incident" : ""}`}
+                                                id={`item-in-${item.id}-${level.name}`}
+                                                key={index}
+                                                onDoubleClick={handleItemInButtonDoubleClick}>
+                                                {level.value}
                                             </div>
                                         ))}
                                     </div>

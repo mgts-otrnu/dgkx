@@ -4,6 +4,7 @@
 .pagination {
   display: flex;
   align-items: center;
+  justify-content: end;
   @include text-inter-12-reg;
   color: var(--text-primary);
   border: 1px solid var(--neutral-5);
@@ -28,6 +29,7 @@
       font-size: 12px !important;
       color: var(--text-primary);
       padding: 4px;
+      cursor: pointer;
 
       &:focus {
         border: none !important;

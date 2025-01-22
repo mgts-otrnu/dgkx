@@ -1,0 +1,123 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.form-request {
+  width: 1024px;
+
+  &__top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  &__left {
+    width: 500px;
+  }
+
+  &__right {
+    width: 452px;
+    padding: 0 24px;
+  }
+
+  .form-item {
+    margin-bottom: 20px;
+    height: 32px;
+
+    &.control-wrapper {
+      input {
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        border: none;
+        width: 90%;
+        height: 28px;
+
+        &:focus {
+          border: none !important;
+          box-shadow: none !important;
+        }
+      }
+    }
+
+    &.control-wrapper:has(input:focus) select {
+      color: var(--text-primary) !important;
+      border: 1px solid var(--bs-primary) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 0.25rem rgb(0, 165, 195, 0.25) !important;
+    }
+  }
+
+  .form-control:disabled, .form-select:disabled {
+    background-image: url("../../../assets/images/icons/lock.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 8px top 8px !important;
+    color: var(--text-secondary) !important;
+  }
+
+  &__comment {
+    display: grid;
+    margin-bottom: 20px;
+
+    .form-control {
+      min-height: 96px !important;
+    }
+
+    span {
+      margin-top: 4px;
+      width: 100%;
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--text-secondary);
+      text-align: end;
+    }
+  }
+
+  .btn {
+    font-size: 14px !important;
+    --bs-btn-padding-y: 4px;
+  }
+
+  &__qr-button {
+    @include text-inter-14-m;
+
+    &:hover {
+      background-color: #d3d4d5;
+    }
+  }
+
+  .form-select {
+    cursor: pointer;
+  }
+
+  .form-select.form-request__status {
+    height: 32px;
+    text-align: center;
+    color: var(--white) !important;
+    background-image: url("../../../assets/images/icons/arrow-select-status.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: center right 40% !important;
+
+    &:has(.form-request__status-option_draft) {
+      background-color: var(--neutral-7) !important;
+    }
+
+    &:has(.form-request__status-option_progress) {
+      background-color: var(--progress) !important;
+    }
+
+    &:has(.form-request__status-option_finished) {
+      background-color: var(--finished) !important;
+    }
+
+    option.form-request__status-option {
+      background-color: var(--white) !important;
+      color: var(--text-primary) !important;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+      border: none !important;
+    }
+  }
+}

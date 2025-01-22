@@ -1,0 +1,60 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.popup-incidents {
+  width: 570px;
+  background: var(--white);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 10px 16px 16px;
+  box-sizing: border-box;
+  max-height: 862px;
+
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+
+  }
+
+  &__close-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../../assets/images/icons/close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 24px;
+  }
+
+  &__title {
+    @include text-inter-14-sb;
+    margin-bottom: 0;
+  }
+
+  &__button {
+    font-size: 14px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100% - 102px);
+    overflow-y: scroll;
+  }
+}

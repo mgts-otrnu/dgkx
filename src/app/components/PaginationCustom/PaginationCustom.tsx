@@ -1,11 +1,11 @@
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 import "./PaginationCustom.scss";
 
 interface Props {
     paginationItems: any[];
     type: "sm" | "full";
-    itemsPerPageInitial: number;
+    itemsPerPageInitial: 10 | 15 | 25 | 50;
 }
 
 function PaginationCustom({paginationItems, type, itemsPerPageInitial}: Props) {
@@ -15,7 +15,6 @@ function PaginationCustom({paginationItems, type, itemsPerPageInitial}: Props) {
     const [endPage, setEndPage] = useState<number>(0);
     const [totalItems, setTotalItems] = useState<number>(0);
     const [totalPages, setTotalPages] = useState<number>(0);
-    const [selectedRowsCount, setSelectedRowsCount] = useState<number>(0);
 
     const itemsPerPageList = [
         {value: 0, count: 10},
@@ -24,7 +23,6 @@ function PaginationCustom({paginationItems, type, itemsPerPageInitial}: Props) {
     ]
 
     function showPage(page: number, itemsPerPageCurrent: number): void {
-        console.log(itemsPerPageCurrent);
         const startPageCount: number = page * itemsPerPageCurrent;
         const endPageCount: number = startPageCount + itemsPerPageCurrent;
 
@@ -38,7 +36,6 @@ function PaginationCustom({paginationItems, type, itemsPerPageInitial}: Props) {
             item.classList.toggle('d-none', index < startPageCount || index >= endPageCount);
         });
     }
-
 
     function handlePrevButtonClick(): void {
         const currentPageNew: number = currentPage - 1;
@@ -86,40 +83,33 @@ function PaginationCustom({paginationItems, type, itemsPerPageInitial}: Props) {
     }, [paginationItems]);
 
     return (
-        <div className={`pagination ${type === "full" ? "justify-content-between" : "justify-content-end"}`}>
+        <div className="pagination">
             {type === "full" &&
-                <div className="pagination__left">
-                    <div className="pagination__selected">Выделено строк {selectedRowsCount} / {totalItems}</div>
+                <div className="pagination__items-count">
+                    Строк на странице
+                    <select className="form-select select-default ms-2 me-4"
+                            id="items-count"
+                            aria-label="Строк на странице"
+                            onChange={onItemsCountChange}>
+                        {itemsPerPageList.map((item: any, index: number) => (
+                            <option key={index} value={index}>{item.count}</option>
+                        ))}
+                    </select>
                 </div>
             }
-            <div className="pagination__right">
-                {type === "full" &&
-                    <div className="pagination__items-count">
-                        Строк на странице
-                        <select className="form-select select-default ms-2 me-4"
-                                id="items-count"
-                                aria-label="Строк на странице"
-                                onChange={onItemsCountChange}>
-                            {itemsPerPageList.map((item: any, index: number) => (
-                                <option key={index} value={index}>{item.count}</option>
-                            ))}
-                        </select>
-                    </div>
-                }
-                <div className="pagination__pages-of">
-                    {startPage}-{endPage <= totalItems ? endPage : totalItems} / {totalItems}
-                </div>
-                <button className="pagination__button pagination__button_prev" onClick={handlePrevButtonClick}></button>
-                <div className="pagination__info">Страница
-                    <input className="pagination__input"
-                           id="pagination-input"
-                           type="text"
-                           defaultValue={currentPage + 1}
-                           onChange={onInputChange}/>
-                    из {totalPages}
-                </div>
-                <button className="pagination__button pagination__button_next" onClick={handleNextButtonClick}></button>
+            <div className="pagination__pages-of">
+                {startPage + 1}-{endPage <= totalItems ? endPage : totalItems} / {totalItems}
             </div>
+            <button className="pagination__button pagination__button_prev" onClick={handlePrevButtonClick}></button>
+            <div className="pagination__info">Страница
+                <input className="pagination__input"
+                       id="pagination-input"
+                       type="text"
+                       defaultValue={currentPage + 1}
+                       onChange={onInputChange}/>
+                из {totalPages}
+            </div>
+            <button className="pagination__button pagination__button_next" onClick={handleNextButtonClick}></button>
         </div>
     )
 }

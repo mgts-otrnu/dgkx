@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 
 import HeaderMenuItem from "../../components/HeaderMenuItem/HeaderMenuItem";
-import twoDigitsNumber from "../../../shared/utils/formatTwoDigitsNumber";
 
 import {Popover} from "bootstrap";
 
@@ -13,21 +12,25 @@ import logOutIcon from "../../../assets/images/icons/header-menu/log-out.svg";
 import {UserInfoType} from "../../../shared/types/user-info.type";
 
 import "./Header.scss"
+import {useLocation} from "react-router-dom";
 
 function Header({userInfo}: { userInfo: UserInfoType | null }) {
+    const location = useLocation();
+
     const [date, setDate] = useState<number>(0);
     const [month, setMonth] = useState<string>("");
     const [hours, setHours] = useState<string>("");
     const [minutes, setMinutes] = useState<string>("/");
-    const [linkCurrent, setLinkCurrent] = useState<string>("/monitoring");
-    const [headerMenuItemsImages, setHeaderMenuItemsImages] = useState<{ [k: string]: string }>({});
+    const [linkCurrent, setLinkCurrent] = useState<string>("");
+    const [headerMenuItemsImages, setHeaderMenuItemsImages]
+        = useState<{ [k: string]: string }>({});
 
     function getDate(): void {
         const currentDate: Date = new Date();
         setDate(currentDate.getDate());
         setMonth(currentDate.toLocaleString("ru", {month: 'short'}));
-        setHours(twoDigitsNumber(currentDate.getHours()));
-        setMinutes(twoDigitsNumber(currentDate.getMinutes()));
+        setHours(currentDate.getHours().toString().padStart(2, "0"));
+        setMinutes(currentDate.getMinutes().toString().padStart(2, "0"));
     }
 
     setInterval((): void => {
@@ -37,6 +40,10 @@ function Header({userInfo}: { userInfo: UserInfoType | null }) {
     useEffect((): void => {
         getDate();
     }, [date, month, hours, minutes]);
+
+    useEffect((): void => {
+        setLinkCurrent(location.pathname);
+    }, [location.pathname]);
 
     useEffect((): void => {
         setHeaderMenuItemsImages(Object.fromEntries(headerMenuItems.map(item => [item.name, item.icon])));
