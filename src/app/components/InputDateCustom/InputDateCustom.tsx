@@ -4,16 +4,16 @@ import {convertDateToInputFormat} from "../../../shared/utils/dateFormatActions"
 
 import "./InputDateCustom.scss";
 
-function InputDateCustom({name, defaultDate, disabled, onChange, isCalendarOpen, setCalendarOpen}: {
+function InputDateCustom({name, defaultDate, placeholder, disabled, onChange, isCalendarOpen, setCalendarOpen}: {
     name: "from" | "to" | "single",
     defaultDate: string,
+    placeholder: string,
     disabled: boolean,
     onChange: (name: "from" | "to" | "single", value: string) => void,
     isCalendarOpen: boolean,
     setCalendarOpen: Dispatch<SetStateAction<boolean>>
 }) {
     const id: string = `input-date-custom-${name}`;
-    const placeholder: string = name === "from" ? "Дата доступа: от" : name === "to" ? "до" : "Дата создания";
 
     const [defaultValue, setDefaultValue] = useState<string>("");
     const [dateElement, setDateElement] = useState<HTMLElement | null>(null);

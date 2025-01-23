@@ -43,7 +43,6 @@ function InputDateDouble({defaultDateFrom, defaultDateTo, disabled, onChange}: {
             onChange(name, value);
         } else {
             const inputElement: HTMLElement | null = document.getElementById(`input-date-custom-${name}`);
-            console.log(inputElement);
 
             if (inputElement) {
                 const date: DateType = name == "from" ? dateFrom : dateTo;
@@ -85,12 +84,14 @@ function InputDateDouble({defaultDateFrom, defaultDateTo, disabled, onChange}: {
                 <div className="input-date-double__wrapper">
                     <InputDateCustom name="from"
                                      defaultDate={defaultDateFrom}
+                                     placeholder="Дата доступа: от"
                                      disabled={disabled}
                                      onChange={onInputChange}
                                      isCalendarOpen={isCalendarOpen}
                                      setCalendarOpen={setCalendarOpen}/>
                     <InputDateCustom name="to"
                                      defaultDate={defaultDateTo}
+                                     placeholder="до"
                                      disabled={disabled}
                                      onChange={onInputChange}
                                      isCalendarOpen={isCalendarOpen}

@@ -1,7 +1,7 @@
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import TableMain from "../../components/TableMain/TableMain";
+import TableAddresses from "../../components/TableAddresses/TableAddresses";
 import PopupIncidentsList from "../../components/PopupIncidentsList/PopupIncidentsList";
 import {mkdDoubleClickHandler} from "../../../shared/utils/mkdDoubleClickHandler";
 
@@ -103,13 +103,10 @@ function Main({
     }
 
     useEffect(() => {
-        console.log(incidentItems);
         incidentItems.forEach(item => {
             const mkdId = item.id.split("/")[0];
             handleActionIncident(mkdId, "init");
         });
-
-        console.log(mkdItemsList);
     }, []);
 
     return (
@@ -129,7 +126,7 @@ function Main({
             </div>
 
             <div className="mkd-table">
-                <TableMain/>
+                <TableAddresses/>
             </div>
 
             {(isPopupIncidentsListOpen && incidentItems.length > 0) &&

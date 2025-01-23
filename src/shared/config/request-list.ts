@@ -1,18 +1,18 @@
-import {RequestItemType} from "../types/request-Item.type";
+import {RequestItemType, RequestStatusType} from "../types/request-Item.type";
 
 export const requestList: RequestItemType[] = [
     {
-        id: "1531",
-        status: "draft",
-        org: "ДЖКХ",
-        fio: "Румынов И.А.",
-        position: "Электрик",
-        phone: "+79136305612",
-        target: "Ремонт",
         comment: "",
         dateAccessFrom: "02.12.2024, 19:56",
         dateAccessTo: "02.12.2024, 19:56",
-        dateCreation: "02.12.2024, 19:56"
+        dateCreation: "02.12.2024, 19:56",
+        fio: "Румынов И.А.",
+        id: "1531",
+        org: "ДЖКХ",
+        phone: "+79136305612",
+        position: "Электрик",
+        status: "draft",
+        target: "Ремонт",
     },
     {
         id: "1532",

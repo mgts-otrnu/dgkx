@@ -6,9 +6,9 @@ import sortByAddress from "../../../shared/utils/sortByAddress";
 import {mkdItems} from "../../../shared/config/mkd-items";
 import {MkdItemType} from "../../../shared/types/mkd-Item.type";
 
-import "./TableMain.scss";
+import "./TableAddresses.scss";
 
-function TableMain() {
+function TableAddresses() {
     const [items, setItems] = useState<HTMLTableRowElement[]>([]);
 
     useEffect(() => {
@@ -50,4 +50,4 @@ function TableMain() {
     );
 }
 
-export default TableMain;
+export default TableAddresses;

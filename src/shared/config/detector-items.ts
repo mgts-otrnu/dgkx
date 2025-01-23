@@ -5,35 +5,35 @@ export const detectorItems: DetectorItemType[] = [
         id: "s0",
         name: "Датчик задымления 1",
         floor: "Подвал",
-        status: "CO2 в норме",
+        status: "CO в норме",
         value: 0
     },
     {
         id: "s1",
         name: "Датчик задымления 2",
         floor: "Этаж 1",
-        status: "CO2 превышен",
+        status: "Превышен CO",
         value: 10
     },
     {
         id: "g1",
         name: "Геркон 1",
         floor: "Чердак",
-        status: "Закрыт",
-        value: "Нет"
+        status: "Закрыто",
+        value: null
     },
     {
         id: "g2",
         name: "Геркон 2",
         floor: "Чердак",
-        status: "Закрыт",
-        value: "Нет"
+        status: "Закрыто",
+        value: null
     },
     {
         id: "h0",
         name: "Датчик влажности 1",
         floor: "Этаж 1",
-        status: "CO2 в норме",
+        status: "CO в норме",
         value: 0
     },
     {
@@ -54,15 +54,15 @@ export const detectorItems: DetectorItemType[] = [
         id: "qr0",
         name: "Считыватель QR",
         floor: "Подвал",
-        status: "Закрыт",
-        value: "Нет"
+        status: "Закрыто",
+        value: null
     },
     {
         id: "qr1",
         name: "Считыватель QR",
         floor: "Подвал",
-        status: "Работает",
-        value: "Нет"
+        status: "Допустимо",
+        value: null
     },
     {
         id: "qr2",

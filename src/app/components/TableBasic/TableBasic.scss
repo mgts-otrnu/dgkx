@@ -1,0 +1,54 @@
+@import "../../../assets/styles/project-variables";
+@import "../../../assets/styles/mixins";
+
+.table-basic {
+  height: 100%;
+  border: 1px solid rgb(222, 226, 230);
+  overflow-x: scroll;
+
+  &__table {
+    width: 100%;
+  }
+
+  th {
+    @include text-inter-14-sb;
+    white-space: nowrap;
+  }
+
+  td {
+    @include text-inter-14-reg;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  &__tr {
+    cursor: pointer;
+
+    &_danger {
+      --bs-table-bg: var(--bg-danger) !important;
+      --bs-table-striped-bg: transparentize;
+    }
+  }
+
+  &__td {
+    text-align: center;
+
+    span {
+      padding: 4px;
+      border-radius: 4px;
+      color: var(--white);
+    }
+
+    &_draft span {
+      background-color: var(--neutral-7);
+    }
+
+    &_progress span {
+      background-color: var(--progress);
+    }
+
+    &_finished span {
+      background-color: var(--finished);
+    }
+  }
+}

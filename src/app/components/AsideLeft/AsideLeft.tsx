@@ -18,13 +18,9 @@ interface Props {
 
 function AsideLeft(props: Props) {
     function handleSearchChange(event: any) {
-        console.log(event.target.value);
         const regEx = /[^А-Яа-я\d/]/gi;
-        console.log(event.target.value.replace(regEx, ''));
-
-
         const filteredMkd: MkdItemType[] = mkdItems.filter((item: MkdItemType) => item.name.replace(regEx, '').includes(event.target.value.replace(regEx, '')));
-        console.log(filteredMkd);
+
         props.setMkdItemsList(filteredMkd);
     }
 

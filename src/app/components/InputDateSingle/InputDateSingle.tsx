@@ -11,8 +11,9 @@ import {DateType} from "../../../shared/types/date.type";
 
 import "./InputDateSingle.scss";
 
-function InputDateSingle({defaultDate, disabled, onChange}: {
+function InputDateSingle({defaultDate, placeholder, disabled, onChange}: {
     defaultDate: string,
+    placeholder: string,
     disabled: boolean,
     onChange: (name: "from" | "to" | "single", value: string) => void
 }) {
@@ -64,7 +65,8 @@ function InputDateSingle({defaultDate, disabled, onChange}: {
         <div className="input-date-single">
             {isCalendarOpen && <div className="input-date-custom__layout" onClick={closeByLayout}></div>}
             <InputDateCustom name="single"
-                             defaultDate={""}
+                             defaultDate={defaultDate}
+                             placeholder={placeholder}
                              disabled={disabled}
                              onChange={onInputChange}
                              isCalendarOpen={isCalendarOpen}
