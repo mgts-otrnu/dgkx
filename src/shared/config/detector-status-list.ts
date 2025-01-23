@@ -6,7 +6,7 @@ export const detectorStatusList = [
     },
     {
         name: "Датчик задымления",
-        statusDanger: "Превышен CO",
+        statusDanger: "CO превышен ",
         statusNorm: "CO в норме"
     },
     {
@@ -26,12 +26,12 @@ export const detectorStatusList = [
     },
     {
         name: "Датчик давления",
-        statusDanger: "Выше нормы" || "Ниже нормы",
+        statusDanger: ["Выше нормы", "Ниже нормы"],
         statusNorm: "Допустимо"
     },
     {
         name: "Датчик температуры",
-        statusDanger: "Выше нормы" || "Ниже нормы",
+        statusDanger: ["Выше нормы", "Ниже нормы"],
         statusNorm: "Допустимо"
     },
     {
@@ -56,7 +56,7 @@ export const detectorStatusList = [
     },
     {
         name: "Считыватель QR",
-        statusDanger: "Удержание" || "Взлом",
-        statusNorm: "Открыто" || "Закрыто",
+        statusDanger: ["Удержание", "Взлом"],
+        statusNorm: ["Открыто", "Закрыто"]
     }
 ];

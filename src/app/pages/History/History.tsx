@@ -14,8 +14,11 @@ function History() {
     const levels: string[] = ["Чердак", "Этаж 1", "Подвал"];
     const names: string[] = Array.from(new Set(detectorStatusList.map(item => item.name)))
         .filter(item => item !== "");
-    const statuses: string[] = Array.from(new Set(detectorStatusList.map(item => item.statusDanger)))
-        .filter(item => item !== "");
+    const statusesDanger: string[] = Array.from(new Set(detectorStatusList.map(item => item.statusDanger)))
+        .flat().filter(item => item !== "");
+    const statusesNorm: string[] = Array.from(new Set(detectorStatusList.map(item => item.statusNorm)))
+        .flat().filter(item => item !== "");
+    const statuses: string[] = Array.from(new Set(statusesDanger.concat(statusesNorm))).sort();
     const values: string[] = Array.from(new Set(getTableItems().map(item => item.value)))
         .filter(item => item !== null).sort();
     const events: string[] = ["Аварийное", "Норма"];
