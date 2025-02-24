@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dgkx/static/css/main.ee0686ca.css",
-    "main.js": "/dgkx/static/js/main.6eed77cd.js",
+    "main.css": "/dgkx/static/css/main.0dec47b9.css",
+    "main.js": "/dgkx/static/js/main.c318f9c0.js",
     "static/js/453.6026e8a1.chunk.js": "/dgkx/static/js/453.6026e8a1.chunk.js",
     "static/media/background.svg": "/dgkx/static/media/background.8beb674c28cd1c85ea7a.svg",
     "static/media/floor.svg": "/dgkx/static/media/floor.e3946a98820eb06b992b917e115fdc4f.svg",
@@ -68,12 +68,12 @@
     "static/media/attic-enter.svg": "/dgkx/static/media/attic-enter.4b7c330061eaa4d1182e4cdf9a40bc13.svg",
     "static/media/basement-enter-1.svg": "/dgkx/static/media/basement-enter-1.0e9e2e8618ff3694328756d90e50d479.svg",
     "static/media/basement-trash.svg": "/dgkx/static/media/basement-trash.3261734e646cecda44a2ac064ef8f53d.svg",
-    "main.ee0686ca.css.map": "/dgkx/static/css/main.ee0686ca.css.map",
-    "main.6eed77cd.js.map": "/dgkx/static/js/main.6eed77cd.js.map",
+    "main.0dec47b9.css.map": "/dgkx/static/css/main.0dec47b9.css.map",
+    "main.c318f9c0.js.map": "/dgkx/static/js/main.c318f9c0.js.map",
     "453.6026e8a1.chunk.js.map": "/dgkx/static/js/453.6026e8a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee0686ca.css",
-    "static/js/main.6eed77cd.js"
+    "static/css/main.0dec47b9.css",
+    "static/js/main.c318f9c0.js"
   ]
 }
